@@ -6,6 +6,8 @@
 </script>
 
 <style>
+  @import url("https://fonts.googleapis.com/css2?family=Rancho&display=swap");
+
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -16,6 +18,14 @@
   a {
     text-decoration: none;
     color: inherit;
+  }
+
+  h1 {
+    font-family: "Rancho", sans-serif;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 3rem;
+    color: #ff3e00;
   }
 </style>
 
