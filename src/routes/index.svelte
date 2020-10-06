@@ -20,10 +20,10 @@
 </style>
 
 <svelte:head>
-  <title>Sapper project template</title>
+  <title>Svelte Clocks</title>
 </svelte:head>
 
-<h1>Time</h1>
+<h1>Svelte Clocks</h1>
 
 <div class="grid">
   <a href="DotClock">
