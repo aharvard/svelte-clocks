@@ -7,7 +7,7 @@
 </script>
 
 <style>
-  .clock {
+  .clock-wrapper {
     display: flex;
     height: 100%;
   }
@@ -28,7 +28,7 @@
   }
 </style>
 
-<div class="clock">
+<div class="clock-wrapper">
   <div class="hours">
     {#each hours as hourBlock, i}
       <div class={$time.h === i ? 'block block--current' : 'block'} />

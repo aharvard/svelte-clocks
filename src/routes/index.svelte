@@ -1,6 +1,6 @@
 <script>
   import SvelteClock from "./clocks/SvelteClock.svelte";
-  import MyClock from "./clocks/MyClock.svelte";
+  import GridClock from "./clocks/GridClock.svelte";
   import NumberClock from "./clocks/NumberClock.svelte";
   import CircleClock from "./clocks/CircleClock.svelte";
   
@@ -42,8 +42,8 @@
   <a href="clocks/NumberClock">
     <NumberClock />
   </a>
-  <a href="clocks/MyClock">
-    <MyClock />
+  <a href="clocks/GridClock">
+    <GridClock />
   </a>
   <!-- <a href="clocks/SvelteClock">
     <SvelteClock />
