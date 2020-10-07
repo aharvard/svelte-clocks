@@ -28,7 +28,13 @@
 
 <footer>
 <p><a class="svelte-clocks-logo" href="/">Svelte Clocks</a></p>
+
 <p>by <a href="https://twitter.com/aharvard">Andrew Harvard</a></p>
-<p>Made with <a href="https://svelte.dev/">Svelte</a> & <a href="https://sapper.svelte.dev/">Sapper</a>. Hosted on <a href="https://www.netlify.com/">Netlify</a>. Inspired by the classic <a href="https://svelte.dev/examples#clock">Svelte Clock</a>.</p>
+
+<p>Made with <a href="https://svelte.dev/">Svelte</a> & <a href="https://sapper.svelte.dev/">Sapper</a>. Hosted on <a href="https://www.netlify.com/">Netlify</a>.</p>
+
+<p>Inspired by John Maeda’s classic <a href="https://vimeo.com/198494458">12 o'clocks</a> & the <a href="https://svelte.dev/examples#clock">Svelte Clock</a>.</p>
+
 <p><a href="https://github.com/aharvard/svelte-clocks">View Source</a> GitHub</p>
 </footer>
+
