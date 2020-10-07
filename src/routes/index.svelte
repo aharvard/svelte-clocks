@@ -2,7 +2,7 @@
   import SvelteClock from "./SvelteClock.svelte";
   import MyClock from "./MyClock.svelte";
   import NumberClock from "./NumberClock.svelte";
-  import DotClock from "./DotClock.svelte";
+  import CircleClock from "./CircleClock.svelte";
 </script>
 
 <style>
@@ -36,8 +36,8 @@
 <h1>Svelte Clocks</h1>
 
 <div class="grid">
-  <a href="DotClock">
-    <DotClock />
+  <a href="CircleClock">
+    <CircleClock />
   </a>
   <a href="NumberClock">
     <NumberClock />

@@ -6,7 +6,7 @@
   let w;
 
   $: hour = $time.h > 12 ? $time.h - 12 : $time.h;
-  $: apm = $time.h > 12 ? "PM" : "AM";
+  $: apm = $time.h > 11 ? "PM" : "AM";
 
   $: min = $time.m;
   $: sec = $time.s;
@@ -42,13 +42,22 @@
     hour === 0
       ? hourPathLength - 0.001
       : hourPathLength - (hour / 12) * hourPathLength;
+
+  $: backgroundColor =
+    $time.h < 7
+      ? "#2A1D37"
+      : $time.h < 12
+      ? "#55B3B8"
+      : $time.h < 18
+      ? "#4EB0D4"
+      : "#233545";
 </script>
 
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Gugi&display=swap");
   div {
     height: 100%;
-    background: rgb(199, 31, 118);
+    background: black;
     overflow: hidden;
     display: grid;
     grid-template-columns: 1fr;
@@ -86,7 +95,7 @@
   }
 </style>
 
-<div>
+<div style="background: {backgroundColor}">
   <span bind:clientWidth={w} style="font-size: {w * 0.005}rem"> {apm} </span>
 
   <svg viewBox="0 0 {width} {height}">
