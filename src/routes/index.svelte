@@ -1,12 +1,13 @@
 <script>
-  import SvelteClock from "./SvelteClock.svelte";
-  import MyClock from "./MyClock.svelte";
-  import NumberClock from "./NumberClock.svelte";
-  import CircleClock from "./CircleClock.svelte";
+  import SvelteClock from "./clocks/SvelteClock.svelte";
+  import MyClock from "./clocks/MyClock.svelte";
+  import NumberClock from "./clocks/NumberClock.svelte";
+  import CircleClock from "./clocks/CircleClock.svelte";
+  
 </script>
 
 <style>
-  @import url("https://fonts.googleapis.com/css2?family=Rancho&display=swap");
+
 
   .grid {
     display: grid;
@@ -21,31 +22,30 @@
   }
 
   h1 {
-    font-family: "Rancho", sans-serif;
     text-align: center;
     margin-bottom: 1rem;
     font-size: 3rem;
-    color: #ff3e00;
   }
 </style>
+
 
 <svelte:head>
   <title>Svelte Clocks</title>
 </svelte:head>
 
-<h1>Svelte Clocks</h1>
+<h1 class="svelte-clocks-logo">Svelte Clocks</h1>
 
 <div class="grid">
-  <a href="CircleClock">
+  <a href="clocks/CircleClock">
     <CircleClock />
   </a>
-  <a href="NumberClock">
+  <a href="clocks/NumberClock">
     <NumberClock />
   </a>
-  <a href="MyClock">
+  <a href="clocks/MyClock">
     <MyClock />
   </a>
-  <a href="SvelteClock">
+  <!-- <a href="clocks/SvelteClock">
     <SvelteClock />
-  </a>
+  </a> -->
 </div>

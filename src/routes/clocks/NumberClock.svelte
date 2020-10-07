@@ -1,5 +1,5 @@
 <script>
-  import { time } from "../stores.js";
+  import { time } from "../../stores.js";
 
   $: hour = $time.h > 12 ? $time.h - 12 : $time.h;
   $: min = $time.m;

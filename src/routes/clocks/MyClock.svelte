@@ -1,5 +1,5 @@
 <script>
-  import { time } from "../stores.js";
+  import { time } from "../../stores.js";
 
   let hours = new Array(24);
   let mins = new Array(60);

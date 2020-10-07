@@ -1,7 +1,7 @@
 <script>
-  import { time } from "../stores.js";
+  import { time } from "../../stores.js";
 
-  function startDot() {}
+  let title = "yo"
 
   let w;
 
@@ -95,6 +95,11 @@
   }
 </style>
 
+<svelte:head>
+  <title>Circle Clock</title>
+</svelte:head>
+
+
 <div style="background: {backgroundColor}">
   <span bind:clientWidth={w} style="font-size: {w * 0.005}rem"> {apm} </span>
 
@@ -137,3 +142,5 @@
       stroke-dashoffset={hourProgress} />
   </svg>
 </div>
+
+
