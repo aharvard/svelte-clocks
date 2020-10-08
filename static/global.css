@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Rancho&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gugi&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
 /* Box sizing rules */
 *,
 *::before,
@@ -81,5 +84,5 @@ select {
 .svelte-clocks-logo {
   font-family: "Rancho", sans-serif;
   color: #ff3e00;
-  letter-spacing: -.0125ch;
+  letter-spacing: -0.0125ch;
 }

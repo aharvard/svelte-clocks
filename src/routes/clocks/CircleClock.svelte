@@ -1,8 +1,6 @@
 <script>
   import { time } from "../../stores.js";
 
-  let title = "yo"
-
   let w;
 
   $: hour = $time.h > 12 ? $time.h - 12 : $time.h;
@@ -43,18 +41,24 @@
       ? hourPathLength - 0.001
       : hourPathLength - (hour / 12) * hourPathLength;
 
-  $: backgroundColor =
-    $time.h < 7
-      ? "#2A1D37"
-      : $time.h < 12
-      ? "#55B3B8"
-      : $time.h < 18
-      ? "#4EB0D4"
-      : "#233545";
+  const backgrounds = {
+    sunrise: ["#0C2C5C", "#BE7C39"],
+    day: ["#0B7CEE", "#7ABEE5"],
+    sunset: ["#0661E8", "#FFC286"],
+    night: ["#051226", "#0E0A55"],
+  };
+
+  $: backgrounGradient =
+    $time.h >= 6 && $time.h < 7
+      ? backgrounds.sunrise
+      : $time.h >= 7 && $time.h < 18
+      ? backgrounds.day
+      : $time.h >= 18 && $time.h < 19
+      ? backgrounds.sunset
+      : backgrounds.night;
 </script>
 
 <style>
-  @import url("https://fonts.googleapis.com/css2?family=Gugi&display=swap");
   div {
     height: 100%;
     background: black;
@@ -99,9 +103,12 @@
   <title>Circle Clock</title>
 </svelte:head>
 
-
-<div style="background: {backgroundColor}">
-  <span bind:clientWidth={w} style="font-size: {w * 0.005}rem"> {apm} </span>
+<div
+  style="background-image:linear-gradient( {backgrounGradient[0]}, {backgrounGradient[1]} )">
+  <span bind:clientWidth={w} style="font-size: {w * 0.005}rem">
+    {apm}
+    {$time.h}
+  </span>
 
   <svg viewBox="0 0 {width} {height}">
     <circle
@@ -142,5 +149,3 @@
       stroke-dashoffset={hourProgress} />
   </svg>
 </div>
-
-
