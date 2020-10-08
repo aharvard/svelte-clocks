@@ -1,3 +1,7 @@
+<script>
+  let googleFonts = ["Rancho", "Gugi", "VT323"];
+</script>
+
 <style>
   main {
     padding: 1em;
@@ -21,6 +25,12 @@
     margin-top: 0.75rem;
   }
 </style>
+
+<svelte:head>
+  <link
+    href="https://fonts.googleapis.com/css2?family={googleFonts.join('&family=')}&display=swap"
+    rel="stylesheet" />
+</svelte:head>
 
 <main>
   <slot />

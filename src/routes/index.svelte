@@ -3,12 +3,9 @@
   import GridClock from "./clocks/GridClock.svelte";
   import NumberClock from "./clocks/NumberClock.svelte";
   import CircleClock from "./clocks/CircleClock.svelte";
-  
 </script>
 
 <style>
-
-
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -27,7 +24,6 @@
     font-size: 3rem;
   }
 </style>
-
 
 <svelte:head>
   <title>Svelte Clocks</title>
