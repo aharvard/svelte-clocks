@@ -105,10 +105,7 @@
 
 <div
   style="background-image:linear-gradient( {backgrounGradient[0]}, {backgrounGradient[1]} )">
-  <span bind:clientWidth={w} style="font-size: {w * 0.005}rem">
-    {apm}
-    {$time.h}
-  </span>
+  <span bind:clientWidth={w} style="font-size: {w * 0.005}rem"> {apm} </span>
 
   <svg viewBox="0 0 {width} {height}">
     <circle
