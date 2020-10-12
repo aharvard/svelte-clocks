@@ -1,8 +1,8 @@
 <script>
-  import SvelteClock from "./clocks/SvelteClock.svelte";
   import GridClock from "./clocks/GridClock.svelte";
   import NumberClock from "./clocks/NumberClock.svelte";
   import CircleClock from "./clocks/CircleClock.svelte";
+  import InterClassicClock from "./clocks/InterClassicClock.svelte";
 </script>
 
 <style>
@@ -32,6 +32,9 @@
 <h1 class="svelte-clocks-logo">Svelte Clocks</h1>
 
 <div class="grid">
+  <a href="clocks/InterClassicClock">
+    <InterClassicClock />
+  </a>
   <a href="clocks/CircleClock">
     <CircleClock />
   </a>
