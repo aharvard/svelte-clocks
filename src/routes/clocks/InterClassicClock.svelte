@@ -47,7 +47,7 @@
       // MIN HAND
       ctx.save();
       ctx.rotate((Math.PI / 30) * $time.m + (Math.PI / 1800) * $time.s);
-      makeHand(10, 415, "white", 0);
+      makeHand(10, 390, "white", 0);
       ctx.restore();
 
       // SECOND HAND

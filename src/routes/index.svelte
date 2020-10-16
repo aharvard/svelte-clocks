@@ -3,6 +3,7 @@
   import NumberClock from "./clocks/NumberClock.svelte";
   import CircleClock from "./clocks/CircleClock.svelte";
   import InterClassicClock from "./clocks/InterClassicClock.svelte";
+  import SunClock from "./clocks/SunClock.svelte";
 </script>
 
 <style>
@@ -32,6 +33,9 @@
 <h1 class="svelte-clocks-logo">Svelte Clocks</h1>
 
 <div class="grid">
+  <a href="clocks/SunClock">
+    <SunClock />
+  </a>
   <a href="clocks/InterClassicClock">
     <InterClassicClock />
   </a>
