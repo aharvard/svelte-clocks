@@ -56,7 +56,7 @@
 
       //  Numbers
       for (var num = 1; num < 25; num++) {
-        ctx.rotate(Math.PI / -12);
+        ctx.rotate(Math.PI / 12);
         ctx.save();
         ctx.translate(ORB_RADIUS * NUMBERS_OFFSET, 0);
         ctx.rotate(Math.PI / 2);
@@ -102,7 +102,7 @@
     const spin = () => {
       let secsSoFar = CURRENT.hour * 60 * 60 + CURRENT.min * 60 + CURRENT.sec;
       let totalSecsInADay = 60 * 60 * 24;
-      let timeofDayAngle = (secsSoFar / totalSecsInADay) * 360;
+      let timeofDayAngle = (secsSoFar / totalSecsInADay) * -360;
       ctx.rotate((Math.PI / 180) * 90);
       ctx.rotate((Math.PI / 180) * timeofDayAngle);
       console.log(timeofDayAngle);
