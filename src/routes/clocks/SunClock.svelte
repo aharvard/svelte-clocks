@@ -1,10 +1,6 @@
 <script>
   import { onMount } from "svelte";
-
   import { time } from "../../stores.js";
-
-  const C_W = 1000,
-    C_H = 1000;
 
   $: CURRENT = {
     hour: $time.h,
@@ -13,28 +9,68 @@
     now: $time.now,
   };
 
-  let fakeSunrise = Math.round(Date.parse("14 Oct 2020 07:00:00 CST") / 1000);
-  let fakeSunriseB = Math.round(Date.parse("15 Oct 2020 07:00:00 CST") / 1000);
-  let fakeSunset = Math.round(Date.parse("14 Oct 2020 19:00:00 CST") / 1000);
+  const totalSecsInADay = 60 * 60 * 24;
 
-  let data = {
-    daily: [
-      {
-        sunrise: fakeSunrise,
-        sunset: fakeSunset,
-      },
-      {
-        sunrise: fakeSunriseB,
-        sunset: fakeSunset,
-      },
-    ],
-  };
+  //   GET Sun Data
 
-  let sunset = data.daily[0].sunset;
-  let sunrise = data.daily[1].sunrise;
+  const lat = 36.119791;
+  const lon = -85.511413;
+
+  let dayStart = 0;
+  let dayEnd = 0;
+
+  const APIkey = "bd31cab92f48dd58c302c64f5e50c593";
+  const URL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&appid=${APIkey}`;
+
+  function getRelativeSec(unix_timestamp) {
+    let date = new Date(unix_timestamp * 1000);
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+    return hours * 60 * 60 + minutes * 60 + seconds;
+  }
+
+  async function getWeatherData() {
+    const response = await fetch(URL);
+    const data = await response.json();
+    const today = data.daily[0];
+    const tomorrow = data.daily[1];
+    const sunData = {
+      today: {
+        sunrise: getRelativeSec(today.sunrise),
+        sunset: getRelativeSec(today.sunset),
+      },
+      tomorrow: {
+        sunrise: getRelativeSec(tomorrow.sunrise),
+        sunset: getRelativeSec(tomorrow.sunset),
+      },
+    };
+    return sunData;
+  }
+
+  // CANVAS
+
+  const C_W = 1000,
+    C_H = 1000;
 
   let canvas;
   onMount(() => {
+    let sunriseA = 0;
+    let sunset = 0;
+
+    getWeatherData()
+      .then((data) => {
+        dayStart = data.today.sunrise;
+        dayEnd = data.today.sunset;
+        console.table(data);
+        console.log("🌞" + dayStart, "🌘" + dayEnd);
+      })
+      .then(() => {
+        canvas.style.cssText = "opacity: 1; transform: scale(1) translateY(0)";
+        motion();
+        window.setInterval(motion, 1000);
+      });
+
     const ctx = canvas.getContext("2d");
     const ORB_RADIUS = 300;
     const NUMBERS_OFFSET = 1.1;
@@ -67,7 +103,21 @@
       ctx.restore();
     };
 
-    const makeDayOrb = (dayStartAngle, dayEndAngle) => {
+    const makeDayOrb = () => {
+      // -180 deg = Midnight
+      // -90 deg = 6am
+      // 0 deg = Noon
+      // 90 deg = 6pm
+      // 180 deg = Midnight
+
+      const getAngle = (sunEventTime) => {
+        //   New day starts at 180 deg
+        return (sunEventTime / totalSecsInADay) * 360 - 180;
+      };
+
+      let dayStartAngle = getAngle(dayStart),
+        dayEndAngle = getAngle(dayEnd);
+
       ctx.save();
       ctx.beginPath();
       ctx.moveTo(0, 0);
@@ -101,11 +151,9 @@
 
     const spin = () => {
       let secsSoFar = CURRENT.hour * 60 * 60 + CURRENT.min * 60 + CURRENT.sec;
-      let totalSecsInADay = 60 * 60 * 24;
       let timeofDayAngle = (secsSoFar / totalSecsInADay) * -360;
       ctx.rotate((Math.PI / 180) * 90);
       ctx.rotate((Math.PI / 180) * timeofDayAngle);
-      console.log(timeofDayAngle);
     };
 
     function motion() {
@@ -113,14 +161,12 @@
       ctx.clearRect(C_W * -0.5, C_H * -0.5, C_W, C_H);
       spin();
       makeNightOrb();
-      makeDayOrb(-78, 94);
+      makeDayOrb();
       makeNumbers();
       highlight();
       ctx.restore();
-      //   window.requestAnimationFrame(motion);
+      console.log("motion");
     }
-
-    setInterval(motion, 1000);
   });
 </script>
 
@@ -135,6 +181,7 @@
     grid-template-rows: 1fr;
     background: #222222;
     z-index: -1;
+    overflow: hidden;
   }
 
   canvas {
@@ -146,14 +193,18 @@
     grid-row: 1 / 2;
     object-fit: contain;
     z-index: -1;
+    opacity: 0;
+    transform: scale(0.8) translateY(10%);
+    transition: all 3000ms cubic-bezier(0.16, 1, 0.3, 1);
   }
+
   .line {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     background: red;
     width: 2px;
     z-index: -1;
-    height: 40%;
+    height: 28%;
     margin: auto;
   }
 
@@ -164,6 +215,7 @@
     height: 100%;
     width: 100%;
     margin: 0 auto;
+    /* opacity: 0.1; */
   }
 
   .background {
