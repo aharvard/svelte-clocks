@@ -2,7 +2,7 @@
   import { time } from "../../stores.js";
 
   $: hour = $time.h > 12 ? $time.h - 12 : $time.h;
-  $: min = $time.m < 10 ? `0${$time.m}` : $time.s;
+  $: min = $time.m < 10 ? `0${$time.m}` : $time.m;
   $: sec = $time.s < 10 ? `0${$time.s}` : $time.s;
   $: apm = $time.h > 12 ? "PM" : "AM";
 
