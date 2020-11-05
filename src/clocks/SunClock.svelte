@@ -173,9 +173,9 @@
       strokeOrb();
       ctx.restore();
 
-      console.log("dayStart", dayStart);
-      console.log("dayEnd", dayEnd);
-      console.log("secsSoFar", secsSoFar);
+      // console.log("dayStart", dayStart);
+      // console.log("dayEnd", dayEnd);
+      // console.log("secsSoFar", secsSoFar);
 
       isDay = secsSoFar >= dayStart && secsSoFar <= dayEnd ? true : false;
       isNight = !isDay;
