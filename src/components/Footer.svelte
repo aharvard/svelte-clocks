@@ -1,12 +1,8 @@
 <script>
-  let googleFonts = ["Rancho", "Gugi", "VT323"];
+  import Logo from "./Logo.svelte";
 </script>
 
 <style>
-  main {
-    padding: 1em;
-    min-height: calc(100vh - 2em);
-  }
   footer {
     font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console",
       "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono",
@@ -16,28 +12,13 @@
     padding: 1.25rem 1rem 5rem;
   }
 
-  footer .svelte-clocks-logo {
-    font-size: 2.5rem;
-    text-decoration: none;
-  }
-
-  p + p {
-    margin-top: 0.75rem;
+  p {
+    margin-top: 1rem;
   }
 </style>
 
-<svelte:head>
-  <link
-    href="https://fonts.googleapis.com/css2?family={googleFonts.join('&family=')}&display=swap"
-    rel="stylesheet" />
-</svelte:head>
-
-<main>
-  <slot />
-</main>
-
 <footer>
-  <p><a class="svelte-clocks-logo" href="/">Svelte Clocks</a></p>
+  <Logo />
 
   <p>by <a href="https://twitter.com/aharvard">Andrew Harvard</a></p>
 
@@ -45,7 +26,7 @@
     Made with
     <a href="https://svelte.dev/">Svelte</a>
     &
-    <a href="https://sapper.svelte.dev/">Sapper</a>. Hosted on
+    <a href="https://www.snowpack.dev/">SnowPack</a>. Hosted on
     <a href="https://www.netlify.com/">Netlify</a>.
   </p>
 

@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import { time } from "../../stores.js";
+  import { time } from "../stores.js";
 
   $: apm = $time.h > 11 ? "PM" : "AM";
 
