@@ -76,9 +76,3 @@ select {
     scroll-behavior: auto !important;
   }
 }
-
-.svelte-clocks-logo {
-  font-family: "Rancho", sans-serif;
-  color: #ff3e00;
-  letter-spacing: -0.0125ch;
-}
