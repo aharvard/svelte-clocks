@@ -72,7 +72,7 @@
       numberArray={zeroToFiveArray} />
     <NummberFlipper
       currentNumber={minDigitOnes}
-      numberArray={zeroToFiveArray} />
+      numberArray={zeroToNineArray} />
     <NummberFlipper
       currentNumber={secDigitTens}
       numberArray={zeroToFiveArray} />

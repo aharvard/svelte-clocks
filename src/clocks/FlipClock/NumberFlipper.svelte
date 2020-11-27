@@ -59,7 +59,7 @@
     transform-style: preserve-3d;
     position: relative;
     transition: transform 500ms ease-out;
-    opacity: 0;
+    opacity: 0.1;
     /* --tile-flip-angle: 300deg; */
     /* This sets up the radial tile orientation */
     --tile-flip-angle: 180deg;
