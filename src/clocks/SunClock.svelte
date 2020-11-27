@@ -1,4 +1,5 @@
 <script>
+  import Button from "../components/Button.svelte";
   import { onMount } from "svelte";
   import { time } from "../stores.js";
 
@@ -238,6 +239,15 @@
   .night {
     background: linear-gradient(180deg, #2b2344 40%, #481675 70%);
   }
+
+  :global(#myLocationButton) {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    z-index: 1;
+    display: block;
+    align-self: center;
+    justify-self: center;
+  }
 </style>
 
 <div class="container" bind:clientWidth={CONTAINER_WIDTH}>
@@ -278,5 +288,6 @@
         </clipPath>
       </defs>
     </svg>
+    <Button id="myLocationButton">My Current Location</Button>
   </div>
 </div>
