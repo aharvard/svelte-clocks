@@ -3,6 +3,7 @@
   import Footer from "./components/Footer.svelte";
   import SunClock from "./clocks/SunClock.svelte";
   import GridClock from "./clocks/GridClock.svelte";
+  import FlipClock from "./clocks/FlipClock";
   import NumberClock from "./clocks/NumberClock.svelte";
   import CircleClock from "./clocks/CircleClock.svelte";
   import InterClassicClock from "./clocks/InterClassicClock.svelte";
@@ -11,6 +12,12 @@
 </script>
 
 <style>
+  :global(body) {
+    font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console",
+      "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono",
+      "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier,
+      monospace;
+  }
   main {
     padding: 1em;
     min-height: calc(100vh - 2em);
@@ -33,6 +40,7 @@
 <Header />
 
 <main>
+  <FlipClock />
   <section>
     <SunClock />
     <InterClassicClock />
