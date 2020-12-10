@@ -40,7 +40,6 @@
 <Header />
 
 <main>
-  <FlipClock />
   <section>
     <SunClock />
     <InterClassicClock />
