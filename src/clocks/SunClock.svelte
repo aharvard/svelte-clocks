@@ -257,20 +257,39 @@
     margin: auto;
     /* margin-left: -25%; */
     text-align: center;
+    font-size: 90%;
+  }
+  .bump {
+    transform: scale(1.01);
   }
 </style>
 
 <div class="container" bind:clientWidth={CONTAINER_WIDTH}>
   <p id="myLocationButton">Local to Cookeville, TN</p>
-  <div class="scaler" style={`--scale-value: ${CONTAINER_WIDTH}`}>
-    <canvas
-      bind:this={canvas}
-      width={CANVAS_W}
-      height={CANVAS_H}
-      class:day={isDay}
-      class:night={isNight} />
+  <div class="bump">
+    <div class="scaler" style={`--scale-value: ${CONTAINER_WIDTH}`}>
+      <canvas
+        bind:this={canvas}
+        width={CANVAS_W}
+        height={CANVAS_H}
+        class:day={isDay}
+        class:night={isNight} />
 
-    <div class="line">
+      <div class="line">
+        <svg
+          width="1000px"
+          height="1000px"
+          viewBox="0 0 1000 1000"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink">
+          <path
+            d="M500.5,387 C501.333687,387 502.014587,387.666154 502.032839,388.49964 L508,661 L508,661 L493,661 L498.967161,388.49964 C498.985413,387.666154 499.666313,387 500.5,387 Z"
+            id="Needle"
+            fill="#FF0000" />
+        </svg>
+      </div>
+
       <svg
         width="1000px"
         height="1000px"
@@ -278,26 +297,13 @@
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink">
-        <path
-          d="M500.5,387 C501.333687,387 502.014587,387.666154 502.032839,388.49964 L508,661 L508,661 L493,661 L498.967161,388.49964 C498.985413,387.666154 499.666313,387 500.5,387 Z"
-          id="Needle"
-          fill="#FF0000" />
+        <defs>
+          <clipPath id="forgroundSVG">
+            <path
+              d="M500.080308,562.032471 C710.77694,562.032471 882,854.708493 882,644.185535 C882,433.662577 711.196632,263 500.5,263 C289.803368,263 119,433.662577 119,644.185535 C119,854.708493 289.383676,562.032471 500.080308,562.032471 Z" />
+          </clipPath>
+        </defs>
       </svg>
     </div>
-
-    <svg
-      width="1000px"
-      height="1000px"
-      viewBox="0 0 1000 1000"
-      version="1.1"
-      xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink">
-      <defs>
-        <clipPath id="forgroundSVG">
-          <path
-            d="M500.080308,562.032471 C710.77694,562.032471 882,854.708493 882,644.185535 C882,433.662577 711.196632,263 500.5,263 C289.803368,263 119,433.662577 119,644.185535 C119,854.708493 289.383676,562.032471 500.080308,562.032471 Z" />
-        </clipPath>
-      </defs>
-    </svg>
   </div>
 </div>
