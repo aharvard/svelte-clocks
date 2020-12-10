@@ -11,15 +11,31 @@
 </script>
 
 <style>
+  :global(body) {
+    font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console",
+      "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono",
+      "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier,
+      monospace;
+  }
   main {
     padding: 1em;
     min-height: calc(100vh - 2em);
   }
   section {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-auto-rows: 300px;
+    --grid-track-width: 300px;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(var(--grid-track-width), 1fr)
+    );
+    grid-auto-rows: var(--grid-track-width);
     gap: 1rem;
+  }
+
+  @media (min-width: 500px) {
+    section {
+      --grid-track-width: 400px;
+    }
   }
 </style>
 

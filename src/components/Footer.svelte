@@ -4,10 +4,6 @@
 
 <style>
   footer {
-    font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console",
-      "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono",
-      "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier,
-      monospace;
     text-align: center;
     padding: 1.25rem 1rem 5rem;
   }
