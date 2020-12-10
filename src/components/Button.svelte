@@ -1,10 +1,11 @@
 <script>
   export let id;
+  export let click;
 </script>
 
 <style>
   button {
-    padding: 1rem 2rem;
+    padding: 0.5rem 1rem;
     background: white;
     border: 2px solid #ff3e00;
     border-radius: 4px;
@@ -22,6 +23,6 @@
   }
 </style>
 
-<button {id}>
+<button {id} on:click={click}>
   <slot>Button Slot</slot>
 </button>

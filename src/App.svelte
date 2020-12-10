@@ -3,7 +3,6 @@
   import Footer from "./components/Footer.svelte";
   import SunClock from "./clocks/SunClock.svelte";
   import GridClock from "./clocks/GridClock.svelte";
-  import FlipClock from "./clocks/FlipClock";
   import NumberClock from "./clocks/NumberClock.svelte";
   import CircleClock from "./clocks/CircleClock.svelte";
   import InterClassicClock from "./clocks/InterClassicClock.svelte";
@@ -24,9 +23,19 @@
   }
   section {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-    grid-auto-rows: 500px;
+    --grid-track-width: 300px;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(var(--grid-track-width), 1fr)
+    );
+    grid-auto-rows: var(--grid-track-width);
     gap: 1rem;
+  }
+
+  @media (min-width: 500px) {
+    section {
+      --grid-track-width: 400px;
+    }
   }
 </style>
 

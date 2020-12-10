@@ -1,5 +1,4 @@
 <script>
-  import Button from "../components/Button.svelte";
   import { onMount } from "svelte";
   import { time } from "../stores.js";
 
@@ -10,15 +9,22 @@
     now: $time.now,
   };
 
+  $: console.log(CURRENT);
+
+  console.log(
+    new Date().toLocaleString("en-US", { timeZone: "America/New_York" })
+  );
+
   $: secsSoFar = CURRENT.hour * 60 * 60 + CURRENT.min * 60 + CURRENT.sec;
 
-  const TOTAL_SEC_IN_A_DAY = 60 * 60 * 24,
-    CANVAS_W = 1000,
-    CANVAS_H = 1000,
-    ORB_RADIUS = 300,
-    NUMBERS_OFFSET = 1.1,
-    lat = 36.119791,
-    lon = -85.511413;
+  const TOTAL_SEC_IN_A_DAY = 60 * 60 * 24;
+  const CANVAS_W = 1000;
+  const CANVAS_H = 1000;
+  const ORB_RADIUS = 300;
+  const NUMBERS_OFFSET = 1.1;
+
+  let lat = 36.119791;
+  let lon = -85.511413;
 
   function getRelativeSec(unix_timestamp) {
     let date = new Date(unix_timestamp * 1000);
@@ -47,6 +53,7 @@
         sunset: getRelativeSec(tomorrow.sunset),
       },
     };
+    console.log(sunData);
     return sunData;
   }
 
@@ -206,6 +213,7 @@
   }
   .container {
     background: #f7f7f7;
+    position: relative;
   }
   .scaler {
     transform: scale(calc(var(--scale-value) * 0.0009));
@@ -241,16 +249,19 @@
   }
 
   :global(#myLocationButton) {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-    z-index: 1;
+    position: absolute;
     display: block;
-    align-self: center;
-    justify-self: center;
+    bottom: 5%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    /* margin-left: -25%; */
+    text-align: center;
   }
 </style>
 
 <div class="container" bind:clientWidth={CONTAINER_WIDTH}>
+  <p id="myLocationButton">Local to Cookeville, TN</p>
   <div class="scaler" style={`--scale-value: ${CONTAINER_WIDTH}`}>
     <canvas
       bind:this={canvas}
@@ -288,6 +299,5 @@
         </clipPath>
       </defs>
     </svg>
-    <Button id="myLocationButton">My Current Location</Button>
   </div>
 </div>
